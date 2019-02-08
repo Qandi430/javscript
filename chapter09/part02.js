@@ -193,7 +193,9 @@ new 키워드로 만든 새 객체는 생성자의 prototype 프로퍼티에 접
             this._userGears = ['P','N','R','D']; 
             this._userGear = this._userGears[0];  
         }
+        
         get userGear(){ return this._userGear};
+        
         set userGear(value){
             if(this._userGears.indexOf(value) < 0)
                 throw new Error(`Invalid gear : ${value}`);
@@ -306,6 +308,7 @@ new 키워드로 만든 새 객체는 생성자의 prototype 프로퍼티에 접
     super()는 슈퍼클래스의 생성재를 호출하는 특별한 함수이다.
     서브클래스에서는 이함수를 반드시호출해야한다. 호출하지않으면 에러가 일어난다.
     -----------------*/
+    console.log("-------------------------------------------")
     const v = new Vehicle();
     v.addPassenger("Frank");
     v.addPassenger("Judy");
@@ -316,6 +319,7 @@ new 키워드로 만든 새 객체는 생성자의 prototype 프로퍼티에 접
     console.log(c.passengers);
     //v.deployAirbags();    //error Vehicle엔 deployAirbags 메서드가 없음
     c.deployAirbags();      
+    console.log("-------------------------------------------")
 }
 
 /*---------------------------------------------------
@@ -355,12 +359,13 @@ new 키워드로 만든 새 객체는 생성자의 prototype 프로퍼티에 접
 
     const c = new Car();
     const m = new Motocycle();
-
+    
     console.log(c instanceof Car);          //true  객체 c는 Car의 인스턴스이다
     console.log(c instanceof Vehicle);      //true  객체 c는 Vehicle의 인스턴스이다(Car가 상속받았기 때문)
     console.log(m instanceof Car);          //false 객체 m은 Car의 인스턴스가 아니다(같은 Vehicle을 상속받았지만 Car와 Motocycle은 다른 객체)
     console.log(m instanceof Motocycle);    //true  객체 m은 Motocycle의 인스턴스이다.
     console.log(m instanceof Vehicle);      //true  객체 m은 Vehicle의 인스턴스이다(Motocycle이 상속받았기 때문)
+    
 }
 
 /*-----------------
